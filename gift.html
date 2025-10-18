@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Gift!</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #000000 0%, #000000 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {text-align: center; padding: 20px;}
+
+    .box {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: scale(0.9);
+      position: absolute;
+    }
+    .box.active {
+      opacity: 1;
+      transform: scale(1);
+      position: relative;
+    }
+
+    .box h1, .gift-message h2 {color: #333; margin-bottom: 20px;}
+    .box p {color: #666; margin-bottom: 30px; font-size: 18px;}
+
+    button {
+      background: linear-gradient(135deg, #bfbfc0 0%, #8143c0 100%);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    button:active {transform: scale(0.98);}
+    .reset-btn {background: #999; margin-top: 20px;}
+    .reset-btn:hover {background: #777;}
+
+    .gift-image {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box active" id="promptBox">
+      <img class="gift-image" src="kitten-hearts.gif" alt="Gift Prompt">
+      <h1>Surprise!</h1>
+      <p>see your gift?</p>
+      <button onclick="revealGift()">Open</button>
+    </div>
+
+<div class="box" id="giftBox">
+  <div class="gift-message">
+    <h2>🎉 Here's Your Gift! 🎉</h2>
+    <!-- First image -->
+    <img class="gift-image" src="fielding-blue-drum.png" alt="Gift Image">
+
+    <!-- Fixed second image -->
+    <img class="gift-image" src="cute-cat-smiling.webp" alt="Gift Image">
+
+    <p>👁️👅👁️🤙 Ayeeee! mara jayega</p>
+    <button class="reset-btn" onclick="resetGift()">See Again</button>
+  </div>
+</div>
+
+
+  <script>
+    const promptBox = document.getElementById('promptBox');
+    const giftBox = document.getElementById('giftBox');
+
+    function revealGift() {
+      promptBox.classList.remove('active');
+      setTimeout(() => giftBox.classList.add('active'), 400);
+    }
+
+    function resetGift() {
+      giftBox.classList.remove('active');
+      setTimeout(() => promptBox.classList.add('active'), 400);
+    }
+  </script>
+</body>
+</html>
